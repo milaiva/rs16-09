@@ -6,14 +6,9 @@
 #include "player.h"
 #include "wall.h"
 
-/*
-Tutorial Topics:
--events (keyPressEvent() and QKeyEvent)
--event propogation system
--QDebug
-*/
 
 int main(int argc, char *argv[]){
+
     QApplication a(argc, argv);
 
     // create a scene
@@ -40,6 +35,8 @@ int main(int argc, char *argv[]){
     // show the view
     view->setFixedSize(800,600);
     view->show();
+
+    qDebug() << "Radii!";
 
     return a.exec();
 }
