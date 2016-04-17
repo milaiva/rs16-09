@@ -2,7 +2,7 @@
 #include "player.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
-
+#include <QDebug>
 /*
 Tutorial Topics:
 -events (keyPressEvent() and QKeyEvent)
@@ -11,6 +11,7 @@ Tutorial Topics:
 */
 
 int main(int argc, char *argv[]){
+
     QApplication a(argc, argv);
 
     // create a scene
@@ -31,6 +32,8 @@ int main(int argc, char *argv[]){
 
     // show the view
     view->show();
+
+    qDebug() << "Radii!";
 
     return a.exec();
 }
