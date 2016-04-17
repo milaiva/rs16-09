@@ -1,6 +1,6 @@
 #include "wall.h"
 
-wall::wall()
-{
+Wall::Wall() {
+    this->setLine(0, 0, 30, 0);
 
 }
