@@ -6,7 +6,7 @@
 #include "player.h"
 
 Player::Player() {
-    this->setRect(10,10,20,20); // change the rect from 0x0 (default) to 100x100 pixels
+    this->setRect(0,0,20,20);
 }
 
 void Player::keyPressEvent(QKeyEvent *event){

@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QDebug>
 
 #include "path.h"
 #include "player.h"
@@ -11,32 +12,51 @@ int main(int argc, char *argv[]){
 
     QApplication a(argc, argv);
 
-    // create a scene
+
     QGraphicsScene * scene = new QGraphicsScene();
     scene->setSceneRect(-180, -90, 360, 180);
 
-    // create an item to add to the scene
     Player * player = new Player();
-    Wall *wall = new Wall();
     Path *path = new Path(800, 600);
 
-    // add the item to the scene
-    scene->addItem(player);
-    scene->addItem(wall);
-    scene->addItem(path);
+//ISCRTAVA OKVIR LAVIRINTA*************************************************************
 
-    // make rect focusable
+    int horizontalna_velicina=80;   //odredjuje koliko ce kockica zida biti sirok lavirint, 80 jer je svaka kockica 10 piksela siroka
+    int vertikalna_velicina=60;     //odredjuje koliko ce kockica zida biti visok lavirint, 60 jer je svaka kockica 10 piksela visoka
+
+    for(int i=0;i<horizontalna_velicina;i++)
+    {
+        Wall *wall = new Wall(i*10,0);
+        scene->addItem(wall);
+    }
+    for(int i=0;i<vertikalna_velicina;i++)
+    {
+        Wall *wall = new Wall(790,i*10);
+        scene->addItem(wall);
+    }
+    for(int i=0;i<horizontalna_velicina;i++)
+    {
+        Wall *wall = new Wall(i*10,590);
+        scene->addItem(wall);
+    }
+    for(int i=0;i<vertikalna_velicina;i++)
+    {
+        Wall *wall = new Wall(0,i*10);
+        scene->addItem(wall);
+    }
+//***************************************************************************************
+
+    scene->addItem(player);
+//    scene->addItem(path);
+
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
-    // create a view to visualize the scene
     QGraphicsView * view = new QGraphicsView(scene);
 
-    // show the view
     view->setFixedSize(800,600);
     view->show();
 
-    qDebug() << "Radii!";
 
     return a.exec();
 }

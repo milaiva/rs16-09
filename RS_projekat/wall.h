@@ -1,15 +1,14 @@
 #ifndef WALL_H
 #define WALL_H
-<<<<<<< HEAD
 
-#include <QGraphicsLineItem>
-=======
+
+#include <QGraphicsRectItem>
 #include<Qline>
->>>>>>> 07ad6a9709021c8bb14b7e30411cceba62f40584
 
-class Wall: public QGraphicsLineItem {
+
+class Wall: public QGraphicsRectItem {
     public:
-        Wall();
+        Wall(int x,int y);
 };
 
 #endif // WALL_H
