@@ -3,7 +3,6 @@
 
 
 #include <QGraphicsRectItem>
-#include<Qline>
 
 
 class Wall: public QGraphicsRectItem {

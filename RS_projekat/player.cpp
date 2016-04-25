@@ -5,8 +5,8 @@
 
 #include "player.h"
 
-Player::Player() {
-    this->setRect(0,0,20,20);
+Player::Player(int x, int y) {
+    this->setRect(x,y,5,5);
 }
 
 void Player::keyPressEvent(QKeyEvent *event){

@@ -5,7 +5,7 @@
 
 class Player: public QGraphicsRectItem{
     public:
-        Player();
+        Player(int x, int y);
         void keyPressEvent(QKeyEvent * event);
 };
 

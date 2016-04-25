@@ -8,31 +8,32 @@
 #include "path.h"
 
 Path::Path(int width, int height, int start_x, int start_y, bool branching) {
-    QVector<QPointF> points;
-    points << QPoint(0, 0);
 
-    qDebug() << "AA" << branching;
+//    QVector<QPointF> points;
+//    points << QPoint(0, 0);
 
-    int x = start_x;
-    int y = start_y;
+//    qDebug() << "AA" << branching;
 
-    if (branching == true)  this->setPen(QPen(Qt::green));
-    else                    this->setPen(QPen(Qt::red));
+//    int x = start_x;
+//    int y = start_y;
 
-    while (true) {
+//    if (branching == true)  this->setPen(QPen(Qt::green));
+//    else                    this->setPen(QPen(Qt::red));
 
-        int rx = rand() % 3 - 1;
-        int ry = rand() % 3 - 1;
+//    while (true) {
 
-        x += ry == 0 ? rx * 50 : 0;
-        y += rx == 0 ? ry * 50 : 0;
+//        int rx = rand() % 3 - 1;
+//        int ry = rand() % 3 - 1;
 
-        points << QPoint(x, y);
+//        x += ry == 0 ? rx * 50 : 0;
+//        y += rx == 0 ? ry * 50 : 0;
 
-        if (branching == true) new Path(width, height, x, y, false);
+//        points << QPoint(x, y);
 
-        if (x >= width / 2 || y >= height / 2 || x <= - width / 2 || y <= -height / 2) break;
-    }
+//        if (branching == true) new Path(width, height, x, y, false);
 
-    this->setPolygon(QPolygonF(points));
+//        if (x >= width / 2 || y >= height / 2 || x <= - width / 2 || y <= -height / 2) break;
+//    }
+
+//    this->setPolygon(QPolygonF(points));
 }
