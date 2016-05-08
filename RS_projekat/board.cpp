@@ -38,8 +38,6 @@ void Board::move(int x, int y) {
     Cell* cell = this->getCell(x, y);
     cell->visit();
 
-//    QGraphicsRectItem *rect = new QGraphicsRectItem(x*10, y*10, 10, 10);
-//    this->scene->addItem(rect);
 
     if (free_cells) {
         this->cell_stack.push_back(y * this->width + x);
