@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
     Board* b = new Board(40, 30, scene);
     b->move(0, 0);
 
-    Player * player = new Player(390, 290);
+    Player * player = new Player();
 //    Path *path = new Path(800, 600);
 
 //ISCRTAVA OKVIR LAVIRINTA*************************************************************

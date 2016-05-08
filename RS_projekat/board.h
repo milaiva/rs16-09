@@ -9,7 +9,7 @@ class Board {
     private:
         int width;
         int height;
-        int scale = 20;
+        int scale = 50;                                                //OVO SAM POVECAO DA BIH MOGAO DA UBACIM PLAYERA U NORMALNOJ VELICINI, BILO JE 20
         QGraphicsScene *scene;
         std::vector<Cell*> cells;
         std::vector<int> cell_stack;

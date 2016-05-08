@@ -5,6 +5,7 @@
 
 #include <QDebug>
 #include <QGraphicsLineItem>
+#include <QGraphicsRectItem>
 
 Board::Board(int width, int height, QGraphicsScene *scene) {
     int size = width*height;

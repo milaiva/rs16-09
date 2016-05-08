@@ -2,12 +2,14 @@
 #include <QKeyEvent>
 #include <QList>
 #include <QDebug>
-
 #include "player.h"
 
-Player::Player(int x, int y) {
-    this->setRect(x,y,5,5);
-    energy=10;                   //energija se ovde inicijalizuje, stavio sam 10 da bi lakse videli dal radi
+Player::Player() {
+    setPixmap(QPixmap(":/Images/player.png"));
+    this->setPos(360,280);                //ovde se postavlja pocetna pozicija igraca
+
+    this->setTransformOriginPoint(15,22);  //ovim postavljam da se rotira oko centra
+    energy=30;                   //energija se ovde inicijalizuje, stavio sam 30 da bi lakse videli dal radi
 }
 
 Player::~Player() {
@@ -19,16 +21,20 @@ void Player::keyPressEvent(QKeyEvent *event){
     int modifier_y = 0;
 
     if (event->key() == Qt::Key_A){
-        modifier_x = -10;
+        modifier_x = -5;                                 //malo sam smanjio brzinu kretanja
+        this->setRotation(-90);
         energy=energy-1;                          //energija se smanjuje svakim pokretom igraca
     } else if (event->key() == Qt::Key_D){
-        modifier_x = 10;
+        modifier_x = 5;
+        this->setRotation(90);
         energy=energy-1;
     } else if (event->key() == Qt::Key_W){
-        modifier_y = -10;
+        modifier_y = -5;
+        this->setRotation(0);
         energy=energy-1;
     } else if (event->key() == Qt::Key_S){
-        modifier_y = 10;
+        modifier_y = 5;
+        this->setRotation(180);
         energy=energy-1;
     }
 
