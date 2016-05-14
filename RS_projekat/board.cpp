@@ -1,6 +1,5 @@
 #include "board.h"
 #include "cell.h"
-#include "wall.h"
 #include <vector>
 
 #include <QDebug>
@@ -15,6 +14,7 @@ Board::Board(int width, int height, QGraphicsScene *scene) {
     for (int i = 0; i < size; i++) {
         this->cells.push_back(new Cell());
     }
+    this->move(0, 0);
 }
 
 Cell* Board::getCell(int x, int y) {
@@ -28,7 +28,7 @@ void Board::move(int x, int y) {
 
     int x_new, y_new;
 
-    qDebug() << x << y;
+//    qDebug() << x << y;
 
     bool free_cells = false;
     for (unsigned int i = 0; i < neg.size(); i++) {
@@ -74,16 +74,6 @@ void Board::move(int x, int y) {
     }
 }
 
-void Board::setWall(int x, int y, bool up, bool right, bool down, bool left) {
-    int i = y * this->width + x;
-    this->cells[i]->setWall(up, right, down, left);
-}
-
-void Board::clearWall(int x, int y) {
-    int i = y * this->width + x;
-    this->cells[i]->clearWall();
-}
-
 std::vector<Cell*> Board::getNeighbors(int x, int y) {
     std::vector<Cell*> neighbors;
 
@@ -96,11 +86,6 @@ std::vector<Cell*> Board::getNeighbors(int x, int y) {
     neighbors.push_back(right);
     neighbors.push_back(bottom);
     neighbors.push_back(left);
-
-//    neighbors.push_back((y > 0 ? this->getCell(x, y-1) : new Cell()));
-//    neighbors.push_back((x < this->width -1 ? this->getCell(x+1, y) : new Cell()));
-//    neighbors.push_back((y < this->height - 1 ? this->getCell(x, y+1) : new Cell()));
-//    neighbors.push_back((x > 0 ? this->getCell(x-1, y) : new Cell()));
 
     return neighbors;
 }

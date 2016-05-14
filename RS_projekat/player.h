@@ -6,10 +6,14 @@
 class Player: public QGraphicsPixmapItem{
     private:
         int energy;  //promenljiva koja pokazuje koliko igrac ima energije, kada padne na 0 , on umire
+        int step = 5; // Koliko px ce se pomeriti u svakom koraku
+
+        int decEnergy();
     public:
-        Player();
-        void keyPressEvent(QKeyEvent * event);
+        Player(int);
         ~Player();
+
+        int move(int);
 };
 
 #endif // PLAYER_H

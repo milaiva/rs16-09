@@ -7,17 +7,16 @@
 
 class Board {
     private:
-        int width;
-        int height;
-        int scale = 50;                                                //OVO SAM POVECAO DA BIH MOGAO DA UBACIM PLAYERA U NORMALNOJ VELICINI, BILO JE 20
         QGraphicsScene *scene;
         std::vector<Cell*> cells;
         std::vector<int> cell_stack;
+
+        int width;
+        int height;
+        int scale = 50;
     public:
         Board(int width, int height, QGraphicsScene* scene);
         Cell* getCell(int x, int y);
-        void setWall(int x, int y, bool up, bool right, bool down, bool left);
-        void clearWall(int x, int y);
         std::vector<Cell*> getNeighbors(int x, int y);
         void move(int x, int y);
 };

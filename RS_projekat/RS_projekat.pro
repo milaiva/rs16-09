@@ -13,18 +13,18 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    path.cpp \
     player.cpp \
-    wall.cpp \
     cell.cpp \
-    board.cpp
+    board.cpp \
+    game.cpp \
+    energy.cpp
 
 HEADERS  += \
-    path.h \
     player.h \
-    wall.h \
     cell.h \
-    board.h
+    board.h \
+    game.h \
+    energy.h
 
 FORMS    += mainwindow.ui
 
