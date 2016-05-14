@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     cell.cpp \
     board.cpp \
     game.cpp \
-    energy.cpp
+    energy.cpp \
+    enemy.cpp
 
 HEADERS  += \
     player.h \
     cell.h \
     board.h \
     game.h \
-    energy.h
+    energy.h \
+    enemy.h
 
 FORMS    += mainwindow.ui
 

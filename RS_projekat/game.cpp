@@ -3,8 +3,10 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QKeyEvent>
+#include <stdlib.h> // rand() -> really large int
 
 #include "board.h"
+#include "enemy.h"
 #include "game.h"
 #include "player.h"
 
@@ -21,6 +23,19 @@ Game::Game() {
 
     this->energy = new Energy(energy);
     scene->addItem(this->energy);
+
+
+    int enemy_count =  5;
+    for (int i = 0; i < enemy_count; i++) {
+        Enemy *enemy = new Enemy();
+        int pos_x = 50 + (rand() % 14) * 50 + 5;
+        int pos_y = 50 + (rand() % 10) * 50 + 5;
+
+        qDebug() << QString::number(pos_x) << ";" << QString::number(pos_y);
+
+        enemy->setPos(pos_x, pos_y);
+        scene->addItem(enemy);
+    }
 
     this->setScene(scene);
     this->setFixedSize(800,600);

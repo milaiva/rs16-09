@@ -7,8 +7,8 @@
 Player::Player(int energy) {
     setPixmap(QPixmap(":/Images/player.png"));
     this->energy = energy;
-    this->setPos(410,305);                //ovde se postavlja pocetna pozicija igraca
-    this->setTransformOriginPoint(15,22);  //ovim postavljam da se rotira oko centra
+    this->setPos(405,305);                //ovde se postavlja pocetna pozicija igraca
+    this->setTransformOriginPoint(22.5,22.5);  //ovim postavljam da se rotira oko centra
 }
 
 Player::~Player() {
