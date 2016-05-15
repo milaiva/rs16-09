@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     board.cpp \
     game.cpp \
     energy.cpp \
-    enemy.cpp
+    enemy.cpp \
+    bullet.cpp
 
 HEADERS  += \
     player.h \
@@ -26,7 +27,8 @@ HEADERS  += \
     board.h \
     game.h \
     energy.h \
-    enemy.h
+    enemy.h \
+    bullet.h
 
 FORMS    += mainwindow.ui
 

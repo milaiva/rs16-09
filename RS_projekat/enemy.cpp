@@ -1,15 +1,16 @@
-#include "enemy.h"
-#include <QTimer>
 #include <QDebug>
+#include <QTimer>
+
 #include <stdlib.h> // rand() -> really large int
 
-#include <QDebug>
-Enemy::Enemy(): QObject(), QGraphicsPixmapItem(){
+#include "enemy.h"
+
+Enemy::Enemy(): QObject(), QGraphicsPixmapItem() {
     this->setPixmap(QPixmap(":/Images/player.png"));
+
     // connect
     QTimer * timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-
     timer->start(100);
 }
 
@@ -34,5 +35,4 @@ void Enemy::move(){
     if (colliding_items.size() > 0) {
         this->setPos(this->x() - modifier_x, this->y() - modifier_y);
     }
-//    qDebug() << "AA";
 }

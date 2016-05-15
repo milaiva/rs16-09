@@ -2,8 +2,9 @@
 #define GAME_H
 
 #include <QGraphicsView>
-#include "player.h"
+
 #include "energy.h"
+#include "player.h"
 
 class Game: public QGraphicsView {
     public:

@@ -6,6 +6,7 @@
 #include <stdlib.h> // rand() -> really large int
 
 #include "board.h"
+#include "bullet.h"
 #include "enemy.h"
 #include "game.h"
 #include "player.h"
@@ -23,7 +24,6 @@ Game::Game() {
 
     this->energy = new Energy(energy);
     scene->addItem(this->energy);
-
 
     int enemy_count =  5;
     for (int i = 0; i < enemy_count; i++) {
@@ -43,7 +43,16 @@ Game::Game() {
 }
 
 void Game::keyPressEvent(QKeyEvent *event){
-    int energy_left = this->player->move(event->key());
-    this->energy->update(energy_left);
-    qDebug() << "Left:" << energy_left;
+    int key = event->key();
+    int energy_left = 0;
+
+    if (key == Qt::Key_W || key == Qt::Key_A || key == Qt::Key_S || key == Qt::Key_D) {
+        energy_left = this->player->move(key);
+        this->energy->update(energy_left);
+    } else if (key == Qt::Key_Space) {
+        Bullet *bullet = new Bullet(this->player->directionX(), this->player->directionY(), this->player->x(), this->player->y());
+        this->scene()->addItem(bullet);
+    }
+
+//    qDebug() << "Left:" << energy_left;
 }

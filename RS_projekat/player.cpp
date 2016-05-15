@@ -52,3 +52,17 @@ int Player::move(int key) {
 int Player::decEnergy() {
     return --this->energy;
 }
+
+int Player::directionX() {
+    int direction = 0;
+    if (this->rotation() == 90) direction = 1;
+    else if (this->rotation() == -90) direction = -1;
+    return direction;
+}
+
+int Player::directionY() {
+    int direction = 0;
+    if (this->rotation() == 0) direction = -1;
+    else if (this->rotation() == 180) direction = 1;
+    return direction;
+}

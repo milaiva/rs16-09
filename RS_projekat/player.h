@@ -14,6 +14,8 @@ class Player: public QGraphicsPixmapItem{
         ~Player();
 
         int move(int);
+        int directionX();
+        int directionY();
 };
 
 #endif // PLAYER_H
