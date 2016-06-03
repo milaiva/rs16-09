@@ -1,6 +1,9 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QList>
+#include <typeinfo>
+#include "bug.h"
+#include "enemy.h"
 #include <QDebug>
 #include "player.h"
 
@@ -16,6 +19,8 @@ Player::~Player() {
 
 
 int Player::move(int key) {
+
+
     int modifier_x = 0;
     int modifier_y = 0;
 
@@ -42,6 +47,20 @@ int Player::move(int key) {
 
     if (colliding_items.size() > 0) {
         this->setPos(this->x() - modifier_x, this->y() - modifier_y);
+    }
+
+    /*
+     * PRI KONTAKTU SA BUBOM, POVECAVA MU SE ENERGIJA ZA 50
+     * A PRI KONTAKTU SA NEPRIJATELJEM UMIRE*/
+
+    for(int i=0, n=colliding_items.size();i<n; ++i){
+        if(typeid(*(colliding_items[i]))==typeid(Bug)){
+            scene()->removeItem(colliding_items[i]);
+            energy=energy+50;
+        }
+        if(typeid(*(colliding_items[i]))==typeid(Enemy)){
+            scene()->removeItem(this);
+        }
     }
 
     //Ako igrac skroz izgubi energiju, nestaje
