@@ -3,6 +3,7 @@
 #include <QTimer>
 #include <typeinfo>
 #include "bullet.h"
+#include "trap.h"
 #include "enemy.h"
 
 Bullet::Bullet(int direction_x, int direction_y, int position_x, int position_y): QObject(), QGraphicsPixmapItem() {
@@ -40,9 +41,11 @@ void Bullet::move() {
         for (int i = 0; i < colliding_items.size(); i++) {
             if (typeid(*(colliding_items[i])) == typeid(Enemy)) {
                 (*colliding_items[i]).~QGraphicsItem();
+            if (typeid(*(colliding_items[i])) != typeid(Trap)) {
+                this->Bullet::~Bullet();
             }
         }
-        this->Bullet::~Bullet();
+    }
     }
 
 }
