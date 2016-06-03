@@ -2,7 +2,9 @@
 #include <QTimer>
 
 #include <stdlib.h> // rand() -> really large int
+#include <typeinfo>
 
+#include "bug.h"
 #include "enemy.h"
 
 Enemy::Enemy(): QObject(), QGraphicsPixmapItem() {
@@ -33,6 +35,12 @@ void Enemy::move(){
     QList<QGraphicsItem*> colliding_items = this->collidingItems();
 
     if (colliding_items.size() > 0) {
-        this->setPos(this->x() - modifier_x, this->y() - modifier_y);
+        for(int i=0, n=colliding_items.size();i<n; ++i){
+            if(typeid(*(colliding_items[i]))!=typeid(Bug) && typeid(*(colliding_items[i]))!=typeid(Enemy)){
+                this->setPos(this->x() - modifier_x, this->y() - modifier_y);
+            }
+
+        }
+
     }
 }

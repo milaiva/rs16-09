@@ -21,6 +21,19 @@ Game::Game() {
 
     int energy = 150;
 
+    //MORAO SAM DA STAVIM OVDE, DA BI IGRAC BIO GRAFICKI IZNAD A NE ISPOD ZAMKI. ZAMKE ZBOG TOGA MORAJU DA SE DODAJU NA SCENU PRE NJEGA
+    //VEROVATNO POSTOJI NACIN DA IM SE PROMENI DUBINA(DEPTH), AL OVO JE PRIVREMENO RESENJE
+    int trap_count =  5;
+    for (int i = 0; i < trap_count; i++) {
+        Trap *trap = new Trap();
+        int pos_x = 50 + (rand() % 14) * 50 + 5;
+        int pos_y = 50 + (rand() % 10) * 50 + 5;
+
+        trap->setPos(pos_x, pos_y);
+        scene->addItem(trap);
+    }
+    //*******************************************************
+
     this->player = new Player(energy);
     scene->addItem(this->player);
 
@@ -39,15 +52,6 @@ Game::Game() {
         scene->addItem(enemy);
     }
 
-    int trap_count =  5;
-    for (int i = 0; i < trap_count; i++) {
-        Trap *trap = new Trap();
-        int pos_x = 50 + (rand() % 14) * 50 + 5;
-        int pos_y = 50 + (rand() % 10) * 50 + 5;
-
-        trap->setPos(pos_x, pos_y);
-        scene->addItem(trap);
-    }
 
     int bug_count =  5;
     for (int i = 0; i < bug_count; i++) {

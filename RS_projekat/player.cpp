@@ -2,10 +2,13 @@
 #include <QKeyEvent>
 #include <QList>
 #include <typeinfo>
+
 #include "bug.h"
 #include "enemy.h"
-#include <QDebug>
 #include "player.h"
+#include "trap.h"
+
+#include <QDebug>
 
 Player::Player(int energy) {
     setPixmap(QPixmap(":/Images/player.png"));
@@ -45,21 +48,27 @@ int Player::move(int key) {
 
     QList<QGraphicsItem*> colliding_items = this->collidingItems();
 
-    if (colliding_items.size() > 0) {
-        this->setPos(this->x() - modifier_x, this->y() - modifier_y);
-    }
+
 
     /*
      * PRI KONTAKTU SA BUBOM, POVECAVA MU SE ENERGIJA ZA 50
-     * A PRI KONTAKTU SA NEPRIJATELJEM UMIRE*/
+     * A PRI KONTAKTU SA NEPRIJATELJEM UMIRE
+     * PRI KONTAKTU SA ZAMKOM, SMANJUJE MU SE ENERGIJA BRZO
+    */
 
     for(int i=0, n=colliding_items.size();i<n; ++i){
         if(typeid(*(colliding_items[i]))==typeid(Bug)){
             scene()->removeItem(colliding_items[i]);
             energy=energy+50;
         }
-        if(typeid(*(colliding_items[i]))==typeid(Enemy)){
+        else if(typeid(*(colliding_items[i]))==typeid(Enemy)){
             scene()->removeItem(this);
+        }
+        else if(typeid(*(colliding_items[i]))==typeid(Trap)){
+            energy=energy-30;
+        }
+        else{
+            this->setPos(this->x() - modifier_x, this->y() - modifier_y);
         }
     }
 
