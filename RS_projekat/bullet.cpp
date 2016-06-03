@@ -1,7 +1,7 @@
 #include <QDebug>
 #include <QList>
 #include <QTimer>
-
+#include <typeinfo>
 #include "bullet.h"
 #include "enemy.h"
 

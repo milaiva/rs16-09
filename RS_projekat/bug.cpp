@@ -1,23 +1,23 @@
 #include <QDebug>
 #include <QTimer>
 
-#include <stdlib.h> // rand() -> really large int
+#include <stdlib.h>
 
-#include "enemy.h"
+#include "bug.h"
 
-Enemy::Enemy(): QObject(), QGraphicsPixmapItem() {
-    this->setPixmap(QPixmap(":/Images/player.png"));
+Bug::Bug()
+{
+    this->setPixmap(QPixmap(":/Images/bug.png"));
 
-    // connect
     QTimer * timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-    timer->start(1000);                     //povecao sam tajmer da bi kretanje bilo malo realnije
+    timer->start(1000);                                        //povecao sam tajmer da bi se realnije kretale
 }
 
-void Enemy::move(){
+void Bug::move(){
     int direction = rand() % 2;
 
-    int modifier_x = direction == 0 ? (rand() % 3 - 1) * 10 : 0 ;
+    int modifier_x = direction == 0 ? (rand() % 3 - 1) * 10 : 0;
     int modifier_y = direction == 1 ? (rand() % 3 - 1) * 10 : 0;
 
 //    qDebug() << QString::number(direction) << QString::number(modifier_x + this->trail_x);
@@ -27,6 +27,7 @@ void Enemy::move(){
 
     this->trail_x += modifier_x;
     this->trail_y += modifier_y;
+
 
     this->setPos(this->x() + modifier_x, this->y() + modifier_y);
 

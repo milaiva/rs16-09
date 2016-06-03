@@ -13,7 +13,7 @@ class Board {
 
         int width;
         int height;
-        int scale = 50;
+        int scale = 100;
     public:
         Board(int width, int height, QGraphicsScene* scene);
         Cell* getCell(int x, int y);

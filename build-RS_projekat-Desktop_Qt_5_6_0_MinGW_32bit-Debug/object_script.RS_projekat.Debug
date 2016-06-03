@@ -1,0 +1,16 @@
+INPUT(
+./debug/main.o
+./debug/player.o
+./debug/cell.o
+./debug/board.o
+./debug/game.o
+./debug/energy.o
+./debug/enemy.o
+./debug/bullet.o
+./debug/trap.o
+./debug/bug.o
+./debug/qrc_resources.o
+./debug/moc_enemy.o
+./debug/moc_bullet.o
+./debug/moc_bug.o
+);

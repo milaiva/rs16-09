@@ -8,6 +8,8 @@
 #include "board.h"
 #include "bullet.h"
 #include "enemy.h"
+#include "trap.h"
+#include "bug.h"
 #include "game.h"
 #include "player.h"
 
@@ -35,6 +37,26 @@ Game::Game() {
 
         enemy->setPos(pos_x, pos_y);
         scene->addItem(enemy);
+    }
+
+    int trap_count =  5;
+    for (int i = 0; i < trap_count; i++) {
+        Trap *trap = new Trap();
+        int pos_x = 50 + (rand() % 14) * 50 + 5;
+        int pos_y = 50 + (rand() % 10) * 50 + 5;
+
+        trap->setPos(pos_x, pos_y);
+        scene->addItem(trap);
+    }
+
+    int bug_count =  5;
+    for (int i = 0; i < bug_count; i++) {
+        Bug *bug = new Bug();
+        int pos_x = 50 + (rand() % 14) * 50 + 5;
+        int pos_y = 50 + (rand() % 10) * 50 + 5;
+
+        bug->setPos(pos_x, pos_y);
+        scene->addItem(bug);
     }
 
     this->setScene(scene);
