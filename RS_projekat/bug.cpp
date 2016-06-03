@@ -22,7 +22,7 @@ void Bug::move(){
     int modifier_x = direction == 0 ? (rand() % 3 - 1) * 10 : 0;
     int modifier_y = direction == 1 ? (rand() % 3 - 1) * 10 : 0;
 
-//    qDebug() << QString::number(direction) << QString::number(modifier_x + this->trail_x);
+//a    qDebug() << QString::number(direction) << QString::number(modifier_x + this->trail_x);
 
     if      (direction == 0 && modifier_x + this->trail_x == 0) this->move();
     else if (direction == 1 && modifier_y + this->trail_y == 0) this->move();
