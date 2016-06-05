@@ -5,20 +5,23 @@
 #include "cell.h"
 #include <QGraphicsScene>
 
+/**
+ * @brief The Board class   Tabla za igru, prazan lavirint
+ */
 class Board {
     private:
-        QGraphicsScene *scene;
-        std::vector<Cell*> cells;
-        std::vector<int> cell_stack;
+        QGraphicsScene *scene;                                  // Scena na kojoj se lavirint nalazi
+        std::vector<Cell*> cells;                               // Celije u okviru table
+        std::vector<int> cell_stack;                            // Mrvice za putanju kojom se krecemo
 
-        int width;
-        int height;
-        int scale = 50;
+        int width;                                              // Sirina table u broju celija
+        int height;                                             // Visina table u broju celija
+        int scale = 50;                                         // Skala table (koliko piksela je jedna celija siroka/visoka)
     public:
-        Board(int width, int height, QGraphicsScene* scene);
-        Cell* getCell(int x, int y);
-        std::vector<Cell*> getNeighbors(int x, int y);
-        void move(int x, int y);
+        Board(int width, int height, QGraphicsScene* scene);    // Konstruktor klase
+        Cell* getCell(int x, int y);                            // Dohvatanje zeljene celije
+        std::vector<Cell*> getNeighbors(int x, int y);          // Dohvatanje suseda zadate celije
+        void move(int x, int y);                                // Kretanje kroz tablu i formiranje lavirinta
 };
 
 #endif // BOARD_H

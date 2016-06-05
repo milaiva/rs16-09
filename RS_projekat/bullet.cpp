@@ -5,6 +5,13 @@
 #include "bullet.h"
 #include "enemy.h"
 
+/**
+ * @brief Bullet::Bullet    Konstruktor klase
+ * @param direction_x       Smer po horizontalnoj osi (-1 za levo, 0 za nigde, 1 za desno)
+ * @param direction_y       Smer po vertikalnoj   osi (-1 za gore, 0 za nigde, 1 za dole)
+ * @param position_x
+ * @param position_y
+ */
 Bullet::Bullet(int direction_x, int direction_y, int position_x, int position_y): QObject(), QGraphicsPixmapItem() {
     setPixmap(QPixmap(":/Images/bullet.png"));
     this->direction_x = direction_x;
@@ -12,8 +19,6 @@ Bullet::Bullet(int direction_x, int direction_y, int position_x, int position_y)
     this->setTransformOriginPoint(22.5,22.5);  //ovim postavljam da se rotira oko centra
 
     qDebug() << "POS" << position_x << position_y << direction_x << direction_y;
-
-    this->setPos(position_x + direction_x * 20, position_y + direction_y * 20);
 
     if      (direction_x ==  1) this->setRotation( 90);
     else if (direction_x == -1) this->setRotation(-90);
@@ -26,12 +31,9 @@ Bullet::Bullet(int direction_x, int direction_y, int position_x, int position_y)
     timer->start(10);
 }
 
-Bullet::~Bullet() {
-}
+Bullet::~Bullet() {}        // Destruktor klase
 
 void Bullet::move() {
-    qDebug() << "AA";
-
     this->setPos(this->x() + this->direction_x, this->y() + this->direction_y);
 
     QList<QGraphicsItem*> colliding_items = this->collidingItems();

@@ -3,19 +3,22 @@
 
 #include <QGraphicsPixmapItem>
 
+/**
+ * @brief The Player class      // Igrac
+ */
 class Player: public QGraphicsPixmapItem{
     private:
-        int energy;  //promenljiva koja pokazuje koliko igrac ima energije, kada padne na 0 , on umire
-        int step = 5; // Koliko px ce se pomeriti u svakom koraku
+        int energy;             // Koliko igrac ima preostale energije, kada padne na 0, on umire
+        int step = 5;           // Koliko px ce se pomeriti u svakom koraku
 
-        int decEnergy();
+        int decEnergy();        // Smanjujemo preostalu energiju
     public:
-        Player(int);
-        ~Player();
+        Player(int);            // Konstruktor klase
+        ~Player();              // Destruktor klase
 
-        int move(int);
-        int directionX();
-        int directionY();
+        int move(int);          // Pomeranje igraca
+        int directionX();       // Dohvatanje x smera igraca
+        int directionY();       // Dohvatanje y smera igraca
 };
 
 #endif // PLAYER_H

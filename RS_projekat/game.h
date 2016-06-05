@@ -6,13 +6,16 @@
 #include "energy.h"
 #include "player.h"
 
+/**
+ * @brief The Game class    Sama igra, manipulacija svim objektima i scenama koji su u upotrebi
+ */
 class Game: public QGraphicsView {
     public:
-        Game();
-        void keyPressEvent(QKeyEvent * event);
+        Game();                                     // Konstruktor klase
+        void keyPressEvent(QKeyEvent * event);      // Reagovanje na pritisak dugmeta
     private:
-        Player* player;
-        Energy* energy;
+        Player* player;                             // Igrac
+        Energy* energy;                             // Prikaz igraceve energije
 };
 
 #endif // GAME_H

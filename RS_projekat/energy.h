@@ -3,12 +3,15 @@
 
 #include <QGraphicsTextItem>
 
+/**
+ * @brief The Energy class  Prikaz preostale energije igraca
+ */
 class Energy : public QGraphicsTextItem {
     private:
-        int amount;
+        int amount;             // Kolicina preostale energije
     public:
-        Energy(int);
-        void update(int);
+        Energy(int);            // Kontruktor klase
+        void update(int);       // Promena energije
 };
 
 #endif // ENERGY_H
