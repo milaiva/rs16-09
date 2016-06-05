@@ -16,6 +16,8 @@ class Game: public QGraphicsView {
     private:
         Player* player;                             // Igrac
         Energy* energy;                             // Prikaz igraceve energije
+        int scene_width = 780;
+        int scene_height = 580;
 };
 
 #endif // GAME_H

@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     game.cpp \
     energy.cpp \
     enemy.cpp \
-    bullet.cpp
+    bullet.cpp \
+    trap.cpp \
+    bug.cpp
 
 HEADERS  += \
     player.h \
@@ -28,7 +30,9 @@ HEADERS  += \
     game.h \
     energy.h \
     enemy.h \
-    bullet.h
+    bullet.h \
+    trap.h \
+    bug.h
 
 FORMS    += mainwindow.ui
 

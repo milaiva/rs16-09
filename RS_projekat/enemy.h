@@ -16,6 +16,9 @@ public slots:
 private:
     int trail_x = 0;    // Prethodna pozicija x
     int trail_y = 0;    // Prethodna pozicija y
+    int step = 5;
+
+    void turn();
 };
 
 #endif // ENEMY_H

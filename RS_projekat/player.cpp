@@ -1,8 +1,14 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QList>
-#include <QDebug>
+#include <typeinfo>
+
+#include "bug.h"
+#include "enemy.h"
 #include "player.h"
+#include "trap.h"
+
+#include <QDebug>
 
 /**
  * @brief Player::Player    Konstruktor klase
@@ -43,8 +49,24 @@ int Player::move(int key) {                         // Pomeranje igraca
 
     // Proveravamo da li se igrac sudario sa necime
     QList<QGraphicsItem*> colliding_items = this->collidingItems();
-    if (colliding_items.size() > 0) { // Ukoliko jeste, vracamo ga nazad
-        this->setPos(this->x() - modifier_x, this->y() - modifier_y);
+
+    /*
+     * PRI KONTAKTU SA BUBOM, POVECAVA MU SE ENERGIJA ZA 50
+     * A PRI KONTAKTU SA NEPRIJATELJEM UMIRE
+     * PRI KONTAKTU SA ZAMKOM, SMANJUJE MU SE ENERGIJA BRZO
+    */
+
+    for (int i=0, n=colliding_items.size();i<n; ++i) {
+        if (typeid(*(colliding_items[i])) == typeid(Bug)) {
+            scene()->removeItem(colliding_items[i]);
+            energy += energy;
+        } else if (typeid(*(colliding_items[i])) == typeid(Enemy)) {
+            scene()->removeItem(this);
+        } else if (typeid(*(colliding_items[i])) == typeid(Trap)) {
+            energy -= energy;
+        } else {
+            this->setPos(this->x() - modifier_x, this->y() - modifier_y);
+        }
     }
 
     //Ako igrac skroz izgubi energiju, nestaje

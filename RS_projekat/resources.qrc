@@ -3,5 +3,7 @@
         <file>player.png</file>
         <file>bullet.png</file>
         <file>enemy.png</file>
+        <file>trap.png</file>
+        <file>bug.png</file>
     </qresource>
 </RCC>

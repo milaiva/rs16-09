@@ -1,0 +1,16 @@
+INPUT(
+./release/main.o
+./release/player.o
+./release/cell.o
+./release/board.o
+./release/game.o
+./release/energy.o
+./release/enemy.o
+./release/bullet.o
+./release/trap.o
+./release/bug.o
+./release/qrc_resources.o
+./release/moc_enemy.o
+./release/moc_bullet.o
+./release/moc_bug.o
+);

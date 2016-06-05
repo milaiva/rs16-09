@@ -1,9 +1,13 @@
 #include <QDebug>
+#include <QGraphicsLineItem>
 #include <QList>
 #include <QTimer>
 
+#include <typeinfo>
+
 #include "bullet.h"
 #include "enemy.h"
+#include "player.h"
 
 /**
  * @brief Bullet::Bullet    Konstruktor klase
@@ -17,6 +21,8 @@ Bullet::Bullet(int direction_x, int direction_y, int position_x, int position_y)
     this->direction_x = direction_x;
     this->direction_y = direction_y;
     this->setTransformOriginPoint(22.5,22.5);  //ovim postavljam da se rotira oko centra
+    this->setX(position_x);
+    this->setY(position_y);
 
     qDebug() << "POS" << position_x << position_y << direction_x << direction_y;
 
@@ -42,9 +48,11 @@ void Bullet::move() {
         for (int i = 0; i < colliding_items.size(); i++) {
             if (typeid(*(colliding_items[i])) == typeid(Enemy)) {
                 (*colliding_items[i]).~QGraphicsItem();
+                this->Bullet::~Bullet();
+            } else if (typeid(*(colliding_items[i])) == typeid(QGraphicsLineItem)) {
+                this->Bullet::~Bullet();
             }
         }
-        this->Bullet::~Bullet();
     }
 
 }

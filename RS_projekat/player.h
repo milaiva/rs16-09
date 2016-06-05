@@ -11,7 +11,6 @@ class Player: public QGraphicsPixmapItem{
         int energy;             // Koliko igrac ima preostale energije, kada padne na 0, on umire
         int step = 5;           // Koliko px ce se pomeriti u svakom koraku
 
-        int decEnergy();        // Smanjujemo preostalu energiju
     public:
         Player(int);            // Konstruktor klase
         ~Player();              // Destruktor klase
@@ -19,6 +18,7 @@ class Player: public QGraphicsPixmapItem{
         int move(int);          // Pomeranje igraca
         int directionX();       // Dohvatanje x smera igraca
         int directionY();       // Dohvatanje y smera igraca
+        int decEnergy();        // Smanjujemo preostalu energiju
 };
 
 #endif // PLAYER_H
