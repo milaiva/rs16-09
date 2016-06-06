@@ -15,7 +15,7 @@
  * @param energy            Energija koju igrac ima u startu
  */
 Player::Player(int energy) {
-    setPixmap(QPixmap(":/Images/player.png"));      // Zadavanje izgleda igraca
+    setPixmap(QPixmap(":/Images/player_stand.png"));// Zadavanje izgleda igraca
     this->energy = energy;                          // Inicijalizacija energije
     this->setPos(405,305);                          // Pocetna pozicija igraca
     this->setTransformOriginPoint(22.5,22.5);       // Zadavanje da se rotira oko centra (45x45 mu je velicina)
